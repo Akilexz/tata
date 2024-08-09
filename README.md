@@ -2,9 +2,6 @@
 
 ## Style code
 
-Config configuration
-https://www.krugle.ec/x/-wLOBg
-
 ## Build
 
 ```bash
