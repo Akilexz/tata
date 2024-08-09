@@ -1,4 +1,4 @@
-package com.ec.tata.task.vo.common;
+package com.ec.tata.account.vo.common;
 
 import lombok.Builder;
 import lombok.Getter;

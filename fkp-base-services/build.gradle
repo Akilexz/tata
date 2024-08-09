@@ -14,4 +14,10 @@ dependencies {
 
     // Documentation API
     implementation 'org.springdoc:springdoc-openapi-ui'
+
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.keycloak:keycloak-spring-boot-starter'
+    implementation 'io.jsonwebtoken:jjwt'
+    implementation 'org.keycloak:keycloak-admin-client'
 }

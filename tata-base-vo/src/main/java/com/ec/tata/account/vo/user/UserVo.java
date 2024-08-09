@@ -1,6 +1,5 @@
-package com.ec.tata.task.vo.task;
+package com.ec.tata.account.vo.user;
 
-import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateTask {
-    @NotBlank(message = "Name is mandatory")
+public class UserVo {
+    private String id;
+    private Long userId;
+    private String userName;
     private String name;
-    private String description;
 }

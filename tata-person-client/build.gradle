@@ -2,6 +2,7 @@ apply plugin: "com.github.ryarnyah.querydsl"
 
 dependencies {
     api project(":tata-base-vo")
+    api project(":fkp-tata-entity")
     compileOnly 'org.projectlombok:lombok'
     compileOnly 'com.querydsl:querydsl-core'
     implementation'com.querydsl:querydsl-jpa'

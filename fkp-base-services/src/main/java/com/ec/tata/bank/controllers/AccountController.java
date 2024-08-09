@@ -1,9 +1,10 @@
-package com.ec.tata.client.controllers;
+package com.ec.tata.bank.controllers;
+
+import com.ec.tata.account.services.IAccountService;
+import com.ec.tata.account.vo.account.CreateAccountVo;
+import com.ec.tata.account.vo.account.FindAllAccountVo;
+import com.ec.tata.account.vo.account.UpdateAccountVo;
 import com.ec.tata.account.vo.common.Response;
-import com.ec.tata.account.vo.customer.CreateCustomerVo;
-import com.ec.tata.account.vo.customer.FindAllCustomerVo;
-import com.ec.tata.account.vo.customer.UpdateCustomerVo;
-import com.ec.tata.person.customer.services.ICustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -24,79 +25,75 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotBlank;
-import javax.ws.rs.PathParam;
-import java.util.Date;
 import java.util.List;
 
 @RestController
 @Lazy
-@RequestMapping("api/v1/clientes")
-@Tag(name = "Customer", description = "The Customer API")
-public class ClientController {
-
+@RequestMapping("api/v1/cuentas")
+@Tag(name = "Account", description = "The account API")
+public class AccountController {
     @Lazy
     @Autowired
-    private ICustomerService customerService;
+    private IAccountService accountService;
 
     @GetMapping()
-    @Operation(summary = "Get all customer")
-    @ApiResponses(value = { @ApiResponse(responseCode =  "200", description = "List of customer", content = { @Content(
-            mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FindAllCustomerVo.class
+    @Operation(summary = "Get all account")
+    @ApiResponses(value = { @ApiResponse(responseCode =  "200", description = "List of account", content = { @Content(
+            mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FindAllAccountVo.class
     )))})})
-    public ResponseEntity<Response<List<FindAllCustomerVo>>> findAll() {
-        return new ResponseEntity<>(Response.<List<FindAllCustomerVo>>builder().data(customerService.findAll())
+    public ResponseEntity<Response<List<FindAllAccountVo>>> findAll() {
+        return new ResponseEntity<>(Response.<List<FindAllAccountVo>>builder().data(accountService.findAll())
                 .code(HttpStatus.OK.value())
                 .message("SUCCESS").build(), HttpStatus.OK);
     }
 
     @PostMapping()
-    @Operation(summary = "Create customer")
+    @Operation(summary = "Create account")
     @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, description =
-            "Information needed to save customer", content = {@Content(mediaType = "application/json",
-            schema = @Schema(implementation = CreateCustomerVo.class))})
-    public ResponseEntity<Response<Boolean>> create(@RequestBody CreateCustomerVo data) {
+            "Information needed to save account", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = CreateAccountVo.class))})
+    public ResponseEntity<Response<Boolean>> create(@RequestBody CreateAccountVo data) {
         try {
-            this.customerService.create(data);
+            this.accountService.create(data);
             return new ResponseEntity<>(Response.<Boolean>builder().code(HttpStatus.CREATED.value())
-                    .message("Created customer").build(), HttpStatus.CREATED);
+                    .message("Created account").build(), HttpStatus.CREATED);
         } catch(Exception e) {
             return new ResponseEntity<>(Response.<Boolean>builder().code(HttpStatus.CREATED.value())
-                    .message("Error to create customer").build(), HttpStatus.CREATED);
+                    .message("Error to create account").build(), HttpStatus.CREATED);
         }
     }
 
     @PutMapping()
-    @Operation(summary = "Update customer")
+    @Operation(summary = "Update account")
     @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, description =
-            "Information needed to update customer", content = {@Content(mediaType = "application/json",
-            schema = @Schema(implementation = UpdateCustomerVo.class))})
-    public ResponseEntity<Response<Boolean>> update(@RequestBody UpdateCustomerVo data) {
+            "Information needed to update account", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = CreateAccountVo.class))})
+    public ResponseEntity<Response<Boolean>> update(@RequestBody UpdateAccountVo data) {
         try {
-            this.customerService.update(data);
+            this.accountService.update(data);
             return new ResponseEntity<>(Response.<Boolean>builder().code(HttpStatus.OK.value())
-                    .message("Updated customer").build(), HttpStatus.OK);
+                    .message("Updated account").build(), HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity<>(Response.<Boolean>builder().code(HttpStatus.OK.value())
-                    .message("Error to update customer").build(), HttpStatus.OK);
+                    .message("Error to update account").build(), HttpStatus.OK);
         }
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete customer")
+    @Operation(summary = "Delete account")
     @Parameter(in = ParameterIn.PATH, description = "id", name = "id",
             schema = @Schema(type = "long"), example = "1")
     public ResponseEntity<Response<Boolean>> delete(@NotBlank @PathVariable("id") Long id) {
         try {
-            this.customerService.delete(id);
+            this.accountService.delete(id);
             return new ResponseEntity<>(Response.<Boolean>builder().code(HttpStatus.OK.value())
-                    .message("Delete customer").build(), HttpStatus.OK);
+                    .message("Delete account").build(), HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity<>(Response.<Boolean>builder().code(HttpStatus.OK.value())
-                    .message("Error to delete customer").build(), HttpStatus.OK);
+                    .message("Error to delete account").build(), HttpStatus.OK);
         }
     }
 }
