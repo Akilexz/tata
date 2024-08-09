@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Service for account resources
  *
- * @author Kruger
+ * @author Joel Castro
  * @version 1.0
  */
 @Lazy

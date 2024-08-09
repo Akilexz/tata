@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 /**
  * Service for bank transaction resources
  *
- * @author Kruger
+ * @author Joel Castro
  * @version 1.0
  */
 @Lazy

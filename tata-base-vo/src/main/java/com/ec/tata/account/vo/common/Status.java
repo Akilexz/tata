@@ -3,7 +3,7 @@ package com.ec.tata.account.vo.common;
 /**
  * Enums for status
  *
- * @author Kruger
+ * @author Joel Castro
  * @version 1.0
  */
 public enum Status {
