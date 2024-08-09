@@ -1,0 +1,33 @@
+dependencyManagement {
+    dependencies {
+
+        // Framework
+        dependencySet(group: 'org.springframework.boot', version: "${springBootVersion}") {
+            //entry 'spring-boot-starter-web'
+            entry 'spring-boot-starter-cache'
+        }
+
+        // Persistence
+        dependency("javax.persistence:javax.persistence-api:${javaxPersistenceApiVersion}")
+        dependency("javax.annotation:javax.annotation-api:${javaxAnnotationApiVersion}")
+        dependencySet(group: 'org.springframework.data', version: "${springDataJPAVersion}") {
+            entry 'spring-data-commons'
+            entry 'spring-data-jpa'
+        }
+        dependencySet(group: 'com.querydsl', version: "${querydslVersion}") {
+            entry 'querydsl-jpa'
+            entry 'querydsl-core'
+            entry 'querydsl-apt'
+        }
+        dependency("org.postgresql:postgresql:${postgresqlVersion}")
+
+        // Pojo
+        dependency("org.projectlombok:lombok:${lombokVersion}")
+
+        // Validators
+        dependency("javax.validation:validation-api:${validationApiVersion}")
+
+        // Documentation
+        dependency("org.springdoc:springdoc-openapi-ui:${springdocOpenapiUiVersion}")
+    }
+}

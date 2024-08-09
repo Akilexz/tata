@@ -1,0 +1,8 @@
+rootProject.name = 'fkp-base-root'
+include 'tata-base-vo'
+include 'tata-person-client'
+include 'tata-person-core'
+include 'tata-bank-client'
+include 'tata-bank-core'
+include 'fkp-base-services'
+
