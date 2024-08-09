@@ -1,0 +1,17 @@
+apply plugin: "org.springframework.boot"
+
+dependencies {
+    api project(":tata-base-vo")
+    api project(":tata-person-core")
+    api project(":tata-bank-core")
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Documentation API
+    implementation 'org.springdoc:springdoc-openapi-ui'
+}
